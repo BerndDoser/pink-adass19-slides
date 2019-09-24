@@ -1,0 +1,52 @@
+= PINK
+
+:imagesdir: images
+:icons: font
+:date: March 11, 2019
+:my_name: Bernd Doser
+:my_email: bernd.doser@h-its.org
+:my_twitter: BerndDoser
+:my_github: BerndDoser
+:revealjs_slideNumber: true
+:revealjs_center: false
+:customcss: custom.css
+:source-highlighter: highlightjs
+
+Parallelized rotation and flipping INvariant Kohonen maps
+
+https://h-its.org[HITS gGmbH] +
+
+ADASS 2019
+
+
+== Neuron and euclidean distance dimension
+
+image::dimensions.jpg[width=80%]
+
+
+== Benchmarks
+
+|                              | PINK 1 | Pink 2 |
+| :---                         |   ---: |   ---: |
+| CPU-1                        |        |  35373 |
+| CPU-1 +    NVIDIA Tesla P40  |   3069 |    909 |
+| CPU-1 + 2x NVIDIA Tesla P40  |   2069 |    636 |
+| CPU-1 + 4x NVIDIA Tesla P40  |   1891 |    858 |
+| CPU-2 +    NVIDIA RTX 2080   |        |    673 |
+| CPU-3 +    NVIDIA GTX 750    |        |   6000 |
+
+All times are in seconds.
+
+  - CPU-1: Intel Gold 5118 (2 sockets, 12 physical cores per socket)
+  - CPU-2: Intel Core i7-8700K (1 socket, 6 physical cores per socket)
+  - CPU-3: Intel Core i7-4790K (1 socket, 4 physical cores per socket)
+
+== Software Design
+
+[source, c++]
+----
+
+SOM<SOMLayout, NeuronLayout, DataType>
+----
+
+
