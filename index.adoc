@@ -22,28 +22,70 @@ ADASS 2019
 
 == Neuron and euclidean distance dimension
 
-image::dimensions.jpg[width=80%]
+image::dimensions.jpg[width=70%]
+
+
+== Software Design
+
+Modern, generic C++17 design to ensure static type safty
+
+[source, c++]
+----
+Data<Cartesian<2>, float> data;
+SOM<Hegagonal, Cartesian<2>, float> som;
+Trainer<Hegagonal, Cartesian<2>, float, true> trainer(som);
+
+trainer(data);
+----
+
+
+== Python Interface
+
+Dynamic python interface was achieved using
+https://github.com/pybind/pybind11[PyBind11] combined with an object oriented layer.
+
+[source, python]
+----
+import pink
+import numpy as np
+
+som_dim = 8
+neuron_dim = int(images.shape[1] / math.sqrt(2.0) * 2.0)
+
+np_som = np.random.rand(som_dim, som_dim, neuron_dim, neuron_dim).astype(np.float32)
+som = pink.SOM(np_som, som_layout="cartesian-2d")
+
+trainer = pink.Trainer(som)
+
+iter_data = iter(tools.DataIterator("data/radio-galaxies.bin"))
+
+for image in iter_data:
+    trainer(pink.Data(image))
+----
+
+
+== Mixed precision ==
+
+The precision for the euclidean distance can be reduced
+
+[cols="^,>,>"]
+|===
+| float | 32 bit | 4294967296
+| int16 | 16 bit | 65536
+| int8  | 8 bit  | 256
+|===
 
 
 == Benchmarks
 
-[cols="<,^"]
+[cols="<,^",width=100%,frame=none,grid=none]
 |===
 |                            | Time / s
 | Intel Gold 5118, 24 cores  |    35373
 | NVIDIA Tesla P40           |      909
-| NVIDIA RTX 2080            |      673
-| NVIDIA GTX 750             |     6000
+| NVIDIA RTX 2080, float     |     1867
+| NVIDIA RTX 2080, int8      |      673
 |===
 
 Radio Galaxy Zoo, hexagonal SOM 21x21, neurons 64x64
-
-== Software Design
-
-[source, c++]
-----
-
-SOM<SOMLayout, NeuronLayout, DataType>
-----
-
 
