@@ -1,6 +1,6 @@
 # Slides for PINK demo booth at ADASS19
 
-[PINK]() at [ADASSXXIX Demo booth D10](https://www.adass2019.nl/abstract/?table=booth&id=14)
+[PINK](https://github.com/HITS-AIN/PINK) at [ADASSXXIX Demo booth D10](https://www.adass2019.nl/abstract/?table=booth&id=14)
 
 Presentation will be available [here](https://bernddoser.github.io/pink-adass19-slides/).
 
