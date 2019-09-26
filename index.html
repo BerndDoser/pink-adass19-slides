@@ -17,7 +17,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );</script><!--[if 
 <div class="paragraph"><p><a href="https://h-its.org">HITS gGmbH</a><br></p></div>
 <div class="paragraph"><p>ADASS 2019</p></div></div></section>
 <section id="_neuron_and_euclidean_distance_dimension"><h2>Neuron and euclidean distance dimension</h2><div class="imageblock" style=""><img src="images/dimensions.jpg" alt="dimensions" width="70%"></div></section>
-<section id="_software_design"><h2>Software Design</h2><div class="paragraph"><p>Modern, generic C++17 design to ensure static type safty</p></div>
+<section id="_software_design"><h2>Software Design</h2><div class="paragraph"><p>Modern, generic C++17 design to ensure static type safety</p></div>
 <pre class="highlight listingblock"><code data-noescape class="c++ language-c++">Data&lt;Cartesian&lt;2&gt;, float&gt; data;
 SOM&lt;Hegagonal, Cartesian&lt;2&gt;, float&gt; som;
 Trainer&lt;Hegagonal, Cartesian&lt;2&gt;, float, true&gt; trainer(som);
@@ -29,7 +29,7 @@ trainer(data);</code></pre></section>
 import numpy as np
 
 som_dim = 8
-neuron_dim = int(images.shape[1] / math.sqrt(2.0) * 2.0)
+neuron_dim = int(image_dim / math.sqrt(2.0) * 2.0)
 
 np_som = np.random.rand(som_dim, som_dim, neuron_dim, neuron_dim).astype(np.float32)
 som = pink.SOM(np_som, som_layout="cartesian-2d")
@@ -37,12 +37,11 @@ som = pink.SOM(np_som, som_layout="cartesian-2d")
 trainer = pink.Trainer(som)
 
 iter_data = iter(tools.DataIterator("data/radio-galaxies.bin"))
-
 for image in iter_data:
     trainer(pink.Data(image))</code></pre></section>
 <section id="_mixed_precision"><h2>Mixed precision</h2><div class="paragraph"><p>The precision for the euclidean distance can be reduced</p></div>
 <table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:33.3333%"><col style="width:33.3333%"><col style="width:33.3334%"></colgroup><tbody><tr><td class="tableblock halign-center valign-top"><p class="tableblock">float</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">32 bit</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">4294967296</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">int16</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">16 bit</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">65536</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">int8</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">8 bit</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">256</p></td></tr></table></section>
-<section id="_benchmarks"><h2>Benchmarks</h2><table class="tableblock frame-none grid-none" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><tbody><tr><td class="tableblock halign-left valign-top"></td><td class="tableblock halign-center valign-top"><p class="tableblock">Time / s</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Intel Gold 5118, 24 cores</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">35373</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA Tesla P40</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">909</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA RTX 2018, float</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">1867</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA RTX 2080, int8</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">673</p></td></tr></table>
+<section id="_benchmarks"><h2>Benchmarks</h2><table class="tableblock frame-none grid-none" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><tbody><tr><td class="tableblock halign-left valign-top"></td><td class="tableblock halign-center valign-top"><p class="tableblock">Time / s</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Intel Gold 5118, 24 cores</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">35373</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA Tesla P40</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">909</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA RTX 2080, float</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">1867</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA RTX 2080, int8</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">673</p></td></tr></table>
 <div class="paragraph"><p>Radio Galaxy Zoo, hexagonal SOM 21x21, neurons 64x64</p></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)

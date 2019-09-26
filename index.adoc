@@ -27,7 +27,7 @@ image::dimensions.jpg[width=70%]
 
 == Software Design
 
-Modern, generic C++17 design to ensure static type safty
+Modern, generic C++17 design to ensure static type safety
 
 [source, c++]
 ----
@@ -50,7 +50,7 @@ import pink
 import numpy as np
 
 som_dim = 8
-neuron_dim = int(images.shape[1] / math.sqrt(2.0) * 2.0)
+neuron_dim = int(image_dim / math.sqrt(2.0) * 2.0)
 
 np_som = np.random.rand(som_dim, som_dim, neuron_dim, neuron_dim).astype(np.float32)
 som = pink.SOM(np_som, som_layout="cartesian-2d")
@@ -58,7 +58,6 @@ som = pink.SOM(np_som, som_layout="cartesian-2d")
 trainer = pink.Trainer(som)
 
 iter_data = iter(tools.DataIterator("data/radio-galaxies.bin"))
-
 for image in iter_data:
     trainer(pink.Data(image))
 ----
