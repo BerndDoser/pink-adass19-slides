@@ -2,7 +2,7 @@
 
 :imagesdir: images
 :icons: font
-:date: March 11, 2019
+:date: October 6-10, 2019
 :my_name: Bernd Doser
 :my_email: bernd.doser@h-its.org
 :my_twitter: BerndDoser
@@ -11,6 +11,7 @@
 :revealjs_center: false
 :customcss: custom.css
 :source-highlighter: highlightjs
+:title-slide-background-image: HITS_RGB_eng.jpg
 
 Parallelized rotation and flipping INvariant Kohonen maps
 
@@ -26,20 +27,16 @@ image::dimensions.jpg[width=80%]
 
 == Benchmarks
 
-|                              | PINK 1 | Pink 2 |
-| :---                         |   ---: |   ---: |
-| CPU-1                        |        |  35373 |
-| CPU-1 +    NVIDIA Tesla P40  |   3069 |    909 |
-| CPU-1 + 2x NVIDIA Tesla P40  |   2069 |    636 |
-| CPU-1 + 4x NVIDIA Tesla P40  |   1891 |    858 |
-| CPU-2 +    NVIDIA RTX 2080   |        |    673 |
-| CPU-3 +    NVIDIA GTX 750    |        |   6000 |
+[cols="<,^"]
+|===
+|                            | Time / s
+| Intel Gold 5118, 24 cores  |    35373
+| NVIDIA Tesla P40           |      909
+| NVIDIA RTX 2080            |      673
+| NVIDIA GTX 750             |     6000
+|===
 
-All times are in seconds.
-
-  - CPU-1: Intel Gold 5118 (2 sockets, 12 physical cores per socket)
-  - CPU-2: Intel Core i7-8700K (1 socket, 6 physical cores per socket)
-  - CPU-3: Intel Core i7-4790K (1 socket, 4 physical cores per socket)
+Radio Galaxy Zoo, hexagonal SOM 21x21, neurons 64x64
 
 == Software Design
 
