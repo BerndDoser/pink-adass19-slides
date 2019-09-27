@@ -1,5 +1,4 @@
 = PINK
-
 :imagesdir: images
 :icons: font
 :date: October 6-10, 2019
@@ -11,14 +10,40 @@
 :revealjs_center: false
 :customcss: custom.css
 :source-highlighter: highlightjs
-:title-slide-background-image: HITS_RGB_eng.jpg
+//:title-slide-background-color: white
+//:title-slide-background-image: eso1830a.tif
+:title-slide-transition: zoom
 
-Parallelized rotation and flipping INvariant Kohonen maps
+Parallelized rotation and flipping INvariant +
+Kohonen maps
+
+image::HITS_RGB_eng.jpg[width=40%]
 
 https://h-its.org[HITS gGmbH] +
+https://www.adass2019.nl/[ADASS 2019]
 
-ADASS 2019
 
+== Self-organizing Kohonen Map
+
+  - Low dimensional representation of the data
+  - Unsupervised learning: No labeling
+
+image::som.png[width=30%]
+
+
+== Assignment 
+
+  * Spatial transformations
+    ** Rotation
+    ** Flipping
+  * Similarity by euclidean distance
+
+== Adaptation 
+
+  * Update assigned neuron with image
+  * Update neighboring neurons weighted by a distribution function
+
+image::adapt.jpg[width=50%]
 
 == Neuron and euclidean distance dimension
 
@@ -75,16 +100,25 @@ The precision for the euclidean distance can be reduced
 |===
 
 
-== Benchmarks
+== Benchmark: CPU vs GPU
 
-[cols="<,^",width=100%,frame=none,grid=none]
+[cols="<,^", width=100%, frame=none, grid=none, %header]
 |===
 |                            | Time / s
 | Intel Gold 5118, 24 cores  |    35373
-| NVIDIA Tesla P40           |      909
-| NVIDIA RTX 2080, float     |     1867
 | NVIDIA RTX 2080, int8      |      673
 |===
 
 Radio Galaxy Zoo, hexagonal SOM 21x21, neurons 64x64
+
+
+== Benchmark: Mixed Precision
+
+[cols="<,^", width=100%, frame=none, grid=none, %header]
+|===
+|                            | Time / s
+| NVIDIA RTX 2080, float     |     1867
+| NVIDIA RTX 2080, int16     |     1062
+| NVIDIA RTX 2080, int8      |      673
+|===
 
