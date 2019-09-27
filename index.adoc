@@ -40,10 +40,10 @@ image::som.png[width=30%]
 
 == Adaptation 
 
-  * Update assigned neuron with image
-  * Update neighboring neurons weighted by a distribution function
+Update assigned neuron with image +
+weighted by a distribution function
 
-image::adapt.jpg[width=50%]
+image::adapt.jpg[width=70%]
 
 == Neuron and euclidean distance dimension
 
@@ -52,38 +52,42 @@ image::dimensions.jpg[width=70%]
 
 == Software Design
 
-Modern, generic C++17 design to ensure static type safety
+Generic C++17 design for static type safety
 
 [source, c++]
 ----
-Data<Cartesian<2>, float> data;
-SOM<Hegagonal, Cartesian<2>, float> som;
-Trainer<Hegagonal, Cartesian<2>, float, true> trainer(som);
+Data<DataLayout, T> data;
+SOM<SOMLayout, NeuronLayout, T> som;
+Trainer<SOMLayout, NeuronLayout, T, UseGPU> trainer(som);
 
-trainer(data);
+trainer(data); \\ Execution of training
 ----
+
+  * Data- and NeuronLayout: Cartesian<N> +
+    with N = 1, 2, 3
+  * SOMLayout: Cartesian<N>, Hexagonal
+  * T: float32 
 
 
 == Python Interface
 
-Dynamic python interface was achieved using
-https://github.com/pybind/pybind11[PyBind11] combined with an object oriented layer.
+Dynamic python interface using
+https://github.com/pybind/pybind11[PyBind11] +
+combined with C++ inheritance
 
 [source, python]
 ----
-import pink
-import numpy as np
-
 som_dim = 8
 neuron_dim = int(image_dim / math.sqrt(2.0) * 2.0)
 
-np_som = np.random.rand(som_dim, som_dim, neuron_dim, neuron_dim).astype(np.float32)
+np_som = numpy.random.rand(som_dim, som_dim,
+    neuron_dim, neuron_dim).astype(np.float32)
 som = pink.SOM(np_som, som_layout="cartesian-2d")
 
 trainer = pink.Trainer(som)
 
-iter_data = iter(tools.DataIterator("data/radio-galaxies.bin"))
-for image in iter_data:
+iter = iter(tools.DataIterator("data.bin"))
+for image in iter:
     trainer(pink.Data(image))
 ----
 
