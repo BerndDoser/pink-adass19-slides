@@ -1,17 +1,19 @@
 = PINK
+:customcss: custom.css
+:date: October 6-10, 2019
 :imagesdir: images
 :icons: font
-:date: October 6-10, 2019
 :my_name: Bernd Doser
 :my_email: bernd.doser@h-its.org
 :my_twitter: BerndDoser
 :my_github: BerndDoser
+:revealjs_autoSlide: 10000
+:revealjs_autoSlideStoppable: true
 :revealjs_slideNumber: true
 :revealjs_center: false
-:customcss: custom.css
+:revealjs_loop: true
+:revealjsdir: reveal.js
 :source-highlighter: highlightjs
-//:title-slide-background-color: white
-//:title-slide-background-image: eso1830a.tif
 :title-slide-transition: zoom
 
 Parallelized rotation and flipping INvariant +
@@ -37,6 +39,8 @@ image::som.png[width=30%]
     ** Rotation
     ** Flipping
   * Similarity by euclidean distance
+
+image::eq-eucl-dist.png[width=40%]
 
 == Adaptation 
 
@@ -125,4 +129,6 @@ Radio Galaxy Zoo, hexagonal SOM 21x21, neurons 64x64
 | NVIDIA RTX 2080, int16     |     1062
 | NVIDIA RTX 2080, int8      |      673
 |===
+
+http://localhost:8888/notebooks/benchmark-small.ipynb[Jupyter/benchmark,role=external,window=_blank]
 

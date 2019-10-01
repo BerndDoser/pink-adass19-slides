@@ -1,4 +1,5 @@
 all: index.html
+	sed -i -e 's/autoSlide: 0/autoSlide: 10000/g' index.html
 
 prepare :
 	bundle config --local github.https true
