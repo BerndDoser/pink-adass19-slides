@@ -96,17 +96,31 @@ for image in iter:
 ----
 
 
+== Code Quality
+
+The quality of the PINK source code was verified by
+https://github.com/adrianzap/softwipe[*softwipe*] and has achieved 9.2 of 10
+points.
+
+
 == Mixed precision ==
 
-The precision for the euclidean distance can be reduced
+The precision for the euclidean distance can be reduced without loosing accuracy
 
-[cols="^,>,>"]
+[cols="^,>"]
 |===
-| float | 32 bit | 4294967296
-| int16 | 16 bit | 65536
-| int8  | 8 bit  | 256
+|              | Range
+| float 32 bit | -3.4 x 10^38 ... 3.4 x 10^38
+| int 16 bit   | -32768 ... 32768
+| int 8 bit    | -128 ... 127
 |===
 
+//== Mixed precision ==
+//
+//image::DP4A_DP2A-624x223.png[width=80%]
+//
+//https://devblogs.nvidia.com/mixed-precision-programming-cuda-8/[Source: NVIDIA]
+//
 
 == Benchmark: CPU vs GPU
 
@@ -130,5 +144,7 @@ Radio Galaxy Zoo, hexagonal SOM 21x21, neurons 64x64
 | NVIDIA RTX 2080, int8      |      673
 |===
 
-http://localhost:8888/notebooks/benchmark-small.ipynb[Jupyter/benchmark,role=external,window=_blank]
+Radio Galaxy Zoo, hexagonal SOM 21x21, neurons 64x64
+
+//http://localhost:8888/notebooks/benchmark-small.ipynb[Jupyter/benchmark,role=external,window=_blank]
 
