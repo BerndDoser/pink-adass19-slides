@@ -9,9 +9,10 @@
 :my_github: BerndDoser
 :revealjs_autoSlide: 10000
 :revealjs_autoSlideStoppable: true
-:revealjs_slideNumber: true
-:revealjs_center: false
+:revealjs_center: true
 :revealjs_loop: true
+:revealjs_margin: .05
+:revealjs_slideNumber: true
 :revealjsdir: reveal.js
 :source-highlighter: highlightjs
 :title-slide-transition: zoom
@@ -99,7 +100,7 @@ for image in iter:
 == Code Quality
 
 The quality of the PINK source code was verified by
-https://github.com/adrianzap/softwipe[*softwipe*] and has achieved 9.2 of 10
+https://github.com/adrianzap/softwipe[*softwipe*] and has achieved 9.4 of 10
 points.
 
 
@@ -107,11 +108,11 @@ points.
 
 The precision for the euclidean distance can be reduced without loosing accuracy
 
-[cols="^,>"]
+[cols="1,2", width=100%]
 |===
-|              | Range
 | float 32 bit | -3.4 x 10^38 ... 3.4 x 10^38
-| int 16 bit   | -32768 ... 32768
+| int 32 bit   | -2147483648 ... 2147483647
+| int 16 bit   | -32768 ... 32767
 | int 8 bit    | -128 ... 127
 |===
 

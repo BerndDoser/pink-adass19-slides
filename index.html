@@ -50,10 +50,10 @@ iter = iter(tools.DataIterator("data.bin"))
 for image in iter:
     trainer(pink.Data(image))</code></pre></section>
 <section id="_code_quality"><h2>Code Quality</h2><div class="paragraph"><p>The quality of the PINK source code was verified by
-<a href="https://github.com/adrianzap/softwipe"><strong>softwipe</strong></a> and has achieved 9.2 of 10
+<a href="https://github.com/adrianzap/softwipe"><strong>softwipe</strong></a> and has achieved 9.4 of 10
 points.</p></div></section>
 <section id="_mixed_precision"><h2>Mixed precision</h2><div class="paragraph"><p>The precision for the euclidean distance can be reduced without loosing accuracy</p></div>
-<table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><tbody><tr><td class="tableblock halign-center valign-top"></td><td class="tableblock halign-right valign-top"><p class="tableblock">Range</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">float 32 bit</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">-3.4 x 10^38 &#8230;&#8203; 3.4 x 10^38</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">int 16 bit</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">-32768 &#8230;&#8203; 32768</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">int 8 bit</p></td><td class="tableblock halign-right valign-top"><p class="tableblock">-128 &#8230;&#8203; 127</p></td></tr></table></section>
+<table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:33.3333%"><col style="width:66.6667%"></colgroup><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">float 32 bit</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">-3.4 x 10^38 &#8230;&#8203; 3.4 x 10^38</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">int 32 bit</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">-2147483648 &#8230;&#8203; 2147483647</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">int 16 bit</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">-32768 &#8230;&#8203; 32767</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">int 8 bit</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">-128 &#8230;&#8203; 127</p></td></tr></table></section>
 <section id="_benchmark_cpu_vs_gpu"><h2>Benchmark: CPU vs GPU</h2><table class="tableblock frame-none grid-none" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><tbody><tr><td class="tableblock halign-left valign-top"></td><td class="tableblock halign-center valign-top"><p class="tableblock">Time / s</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Intel Gold 5118, 24 cores</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">35373</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA RTX 2080, int8</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">673</p></td></tr></table>
 <div class="paragraph"><p>Radio Galaxy Zoo, hexagonal SOM 21x21, neurons 64x64</p></div></section>
 <section id="_benchmark_mixed_precision"><h2>Benchmark: Mixed Precision</h2><table class="tableblock frame-none grid-none" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><tbody><tr><td class="tableblock halign-left valign-top"></td><td class="tableblock halign-center valign-top"><p class="tableblock">Time / s</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA RTX 2080, float</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">1867</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA RTX 2080, int16</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">1062</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">NVIDIA RTX 2080, int8</p></td><td class="tableblock halign-center valign-top"><p class="tableblock">673</p></td></tr></table>
@@ -93,7 +93,7 @@ Reveal.initialize({
   // Enable the slide overview mode
   overview: true,
   // Vertical centering of slides
-  center: false,
+  center: true,
   // Enables touch navigation on devices with touch input
   touch: true,
   // Loop the presentation
@@ -167,7 +167,7 @@ Reveal.initialize({
   height: 700,
 
   // Factor of the display size that should remain empty around the content
-  margin: 0.1,
+  margin: .05,
 
   // Bounds for smallest/largest possible scale to apply to content
   minScale: 0.2,
